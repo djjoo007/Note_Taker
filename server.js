@@ -11,16 +11,21 @@ app.use(express.json());
 
 
 
-//Basic Route 
-
+// ROUTES
+// Get Request
 app.get("/notes", function(req, res) {
     res.sendFile(path.join(__dirname, "Develop/public/notes.html"));
   });
   
-  app.get("/notes", function(req, res) {
+  app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "Develop/public/index.html"));
   });
 
+  app.get("api/notes", function(req, res) {
+      res.json(noteJSON);
+  });
+
+  //Basic Route 
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
   
