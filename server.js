@@ -5,7 +5,7 @@ const noteJSON = require('./db/db.json');
 
 // Set up Express App
 const app = express();
-const PORT = process.env.PORT || 8081;
+const PORT = process.env.PORT || 8080;
 
 // Set up Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -19,14 +19,15 @@ app.get("/notes", function(req, res) {
     res.sendFile(path.join(__dirname, "./public/notes.html"));
   });
   
-app.get("*", function(req, res) {
+// html route 
+app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "./public/index.html"));
   });
-
-  app.get("/api/notes", function(req, res) {
-    res.sendFile(path.join(__dirname, "/db/db.json"));
+  
+// api route
+app.get("/api/notes", function(req, res) {
+    res.json(noteJSON);
 });
-
 // app.get("/api/notes", function(req, res) {
 //     fs.readFile("./db/db.json", "utf-8", function(data) {
 //         return res.json(data);
