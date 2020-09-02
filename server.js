@@ -14,12 +14,12 @@ app.use(express.static("public"));
 
 
 // ROUTES
-// Get Request
+// html route Notes Page
 app.get("/notes", function(req, res) {
     res.sendFile(path.join(__dirname, "./public/notes.html"));
   });
   
-// html route 
+// html route Home Page
 app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "./public/index.html"));
   });
@@ -28,6 +28,13 @@ app.get("/", function(req, res) {
 app.get("/api/notes", function(req, res) {
     res.json(noteJSON);
 });
+
+//   Post Request
+app.post("/api/notes", function(req, res) {
+    const newNotes = req.body;
+    const id = 
+});
+
 // app.get("/api/notes", function(req, res) {
 //     fs.readFile("./db/db.json", "utf-8", function(data) {
 //         return res.json(data);
@@ -42,17 +49,12 @@ app.get("/api/notes", function(req, res) {
 //       return res.json(db);
 //   });
 
-//   Post Request
-app.post("/api/notes", function(req, res) {
-    const newNotes = req.body;
-});
-
-
 
 
 // Delete Request
 app.delete("/api/notes/:id", function(req, res) {
-
+    const id = req.params.id;
+    const note
 });
 
 
