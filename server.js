@@ -24,12 +24,12 @@ app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "./public/index.html"));
   });
   
-// API Route Get Notes
+// API Route Get to Notes
 app.get("/api/notes", function(req, res) {
     res.json(noteJSON);
 });
 
-// API Route Post Notes
+// API Route Post to Notes
 app.post('/api/notes', (req, res) => {
   const lastId = noteJSON.length ? Math.max(...(noteJSON.map(note => note.id))) : 0;
   const id = lastId + 1;
