@@ -1,7 +1,7 @@
-const express = require('express');
-const path = require('path');
-const fs = require('fs');
-const noteJSON = require('./db/db.json');
+const express = require("express");
+const path = require("path");
+const fs = require("fs");
+const noteJSON = require("./db/db.json");
 
 // Set up Express App
 const app = express();
@@ -32,7 +32,11 @@ app.get("/api/notes", function(req, res) {
 //   Post Request
 app.post("/api/notes", function(req, res) {
     const newNotes = req.body;
-    const id = 
+    const id = noteJSON.length;
+    newNotes.id = id +1;
+    noteJSON.push(newNotes);
+    noteUpdate(noteJSON);
+    return res.json(noteJSON);
 });
 
 // app.get("/api/notes", function(req, res) {
