@@ -12,7 +12,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-
 // ROUTES
 // Html Route to Notes Page
 app.get("/notes", function(req, res) {
